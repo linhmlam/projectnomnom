@@ -1,0 +1,99 @@
+<!-- Validation failure messages -->
+
+<% if @user_list.errors.any? %>
+  <% @user_list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- Simple full-width example -->
+
+<div class="page-header">
+  <h1>Edit User List #<%= @user_list.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_user_list/<%= @user_list.id %>" class="form-horizontal">
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="col-sm-2 control-label">
+          User
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @user_list.user_id %>">
+        </div>
+      </div>
+
+      <!-- Label and input for list_id -->
+      <div class="form-group">
+        <label for="list_id" class="col-sm-2 control-label">
+          List
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @user_list.list_id %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update User List" class="btn btn-warning">
+          or
+          <a href="/user_lists/<%= @user_list.id %>">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit User List #<%= @user_list.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_user_list/<%= @user_list.id %>" class="form-horizontal">
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <label for="user_id" class="col-sm-2 control-label">
+              User
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @user_list.user_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for list_id -->
+          <div class="form-group">
+            <label for="list_id" class="col-sm-2 control-label">
+              List
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @user_list.list_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update User List" class="btn btn-warning">
+              or
+              <a href="/user_lists/<%= @user_list.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

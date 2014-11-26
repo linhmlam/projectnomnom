@@ -1,0 +1,32 @@
+/*
+
+Write your custom styles and overrides of Bootstrap in this file.
+
+For example, if you wanted to change the body font:
+
+body {
+  font-family: "Vollkorn";
+}
+
+*/
+
+body { padding-top: 50px;
+padding-bottom: 10px;}
+
+.footer-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.footer-style {
+  font-size: 75%;
+  margin-right: 20px;
+}
+
+.row {
+
+  margin-bottom: 5px;
+
+}
