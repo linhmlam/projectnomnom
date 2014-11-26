@@ -39,16 +39,20 @@
          <li><a href="/recipes/new">Add Recipe</a></li>
       </ul>
 
-       <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user.present? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Signed in as <%= current_user.name %><i class="fa fa-cog fa-lg"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Edit Profile</a></li>
+            <li><a href="/users/edit">Edit Profile</a></li>
             <li class="divider"></li>
-            <li><a href="#">Sign Out</a></li>
-          </ul>
-        </li>
+            <li><a href="/users/sign_out" data-method="delete">Sign Out</a></li>
+        <% else %>
+          <li><a href="/users/sign_up">Sign up</a></li>
+          <li><a href="/users/sign_in">Sign in</a></li>
+        <% end %>
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

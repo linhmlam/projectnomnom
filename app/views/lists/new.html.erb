@@ -1,25 +1,39 @@
 <!-- Validation failure messages -->
 
 <% if @list.errors.any? %>
-  <% @list.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @list.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
-<!-- Simple full-width example-->
-
-<div class="page-header">
-  <h1>Add List</h1>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="page-header">
+      <h1>Add List</h1>
+    </div>
+  </div>
 </div>
 
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="form-group">
-      <label>Select the recipes you would like to shop for this week:</label>
-      <ul class="list-group">
-      <% @recipes.each do |recipe| %>
+<form action="/create_list">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @list.name %>">
+      </div>
+
+      <div>&nbsp;</div>
+
+      <div class="form-group">
+        <label>Select the recipes you would like to shop for this week:</label>
+        <ul class="list-group">
+          <% @recipes.each do |recipe| %>
           <li class="list-group-item">
             <div class="checkbox">
               <label>
@@ -27,32 +41,32 @@
               </label>
             </div>
           </li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 
 
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @list.user_id %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Create List" class="btn btn-success">
-              or
-              <a href="/lists">Cancel</a>
-            </div>
-          </div>
-        </form>
+  <!-- Label and input for user_id -->
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="form-group">
+        <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
       </div>
     </div>
+  </div>
+
+  <div>&nbsp;</div>
+
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="form-group">
+        <input type="submit" value="Create List" class="btn btn-success">
+        or
+        <a href="/lists">Cancel</a>
+      </div>
+    </form>
   </div>
 </div>
 

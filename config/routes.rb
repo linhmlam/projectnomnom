@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'lists#index'
 
+get('/users/new', )
+
   # Routes for the User_list resource:
   # CREATE
   get('/user_lists/new', { :controller => 'user_lists', :action => 'new' })

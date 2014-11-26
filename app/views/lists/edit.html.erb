@@ -11,13 +11,16 @@
 
 
 <!-- Simple full-width example -->
-
-<div class="page-header">
-  <h1>Edit List #<%= @list.id %></h1>
+<div class="row">
+<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+  <div class="page-header">
+    <h1>Edit List #<%= @list.id %></h1>
+  </div>
+</div>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <form action="/update_list/<%= @list.id %>" class="form-horizontal">
       <!-- Label and input for name -->
       <div class="form-group">
