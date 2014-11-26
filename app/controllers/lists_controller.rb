@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @recipes = Recipe.all
   end
 
   def create
