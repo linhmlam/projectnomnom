@@ -10,15 +10,12 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.build
-    3.times {@recipe.recipe_ingredients.build}
   end
 
   def create
     @recipe = Recipe.new
-
-    # @recipe.name = params[:name]
-    # @recipe.photo = params[:photo]
+    @recipe.name = params[:name]
+    @recipe.photo = params[:photo]
 
     if @recipe.save
       redirect_to "/recipes", :notice => "Recipe created successfully."

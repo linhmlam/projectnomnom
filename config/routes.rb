@@ -88,24 +88,21 @@ get('/users/new', )
   # DELETE
   get('/delete_recipe_ingredient/:id', { :controller => 'recipe_ingredients', :action => 'destroy' })
   #------------------------------
-  resources :recipes do
-    resources :recipe_ingredients
-  end
   # # Routes for the Recipe resource:
   # CREATE
-  # get('/recipes/new', { :controller => 'recipes', :action => 'new' })
-  # get('/create_recipe', { :controller => 'recipes', :action => 'create' })
+  get('/recipes/new', { :controller => 'recipes', :action => 'new' })
+  get('/create_recipe', { :controller => 'recipes', :action => 'create' })
 
-  # # # READ
-  # get('/recipes', { :controller => 'recipes', :action => 'index' })
-  # get('/recipes/:id', { :controller => 'recipes', :action => 'show' })
+  # # READ
+  get('/recipes', { :controller => 'recipes', :action => 'index' })
+  get('/recipes/:id', { :controller => 'recipes', :action => 'show' })
 
-  # # # UPDATE
-  # get('/recipes/:id/edit', { :controller => 'recipes', :action => 'edit' })
-  # # get('/update_recipe/:id', { :controller => 'recipes', :action => 'update' })
+  # # UPDATE
+  get('/recipes/:id/edit', { :controller => 'recipes', :action => 'edit' })
+  # get('/update_recipe/:id', { :controller => 'recipes', :action => 'update' })
 
-  # # # DELETE
-  # get('/delete_recipe/:id', { :controller => 'recipes', :action => 'destroy' })
+  # # DELETE
+  get('/delete_recipe/:id', { :controller => 'recipes', :action => 'destroy' })
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.

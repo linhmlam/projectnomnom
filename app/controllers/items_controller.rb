@@ -19,9 +19,9 @@ class ItemsController < ApplicationController
     @item.unit = params[:unit]
 
     if @item.save
-      redirect_to "/lists/:id", :notice => "Item created successfully."
+      redirect_to "/lists", :notice => "Item created successfully."
     else
-      render '/lists/:id'
+      render '/lists'
     end
   end
 
@@ -49,6 +49,6 @@ class ItemsController < ApplicationController
 
     @item.destroy
 
-    redirect_to "/items", :notice => "Item deleted."
+    redirect_to "/lists", :notice => "Item deleted."
   end
 end

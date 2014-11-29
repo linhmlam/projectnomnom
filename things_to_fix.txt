@@ -1,0 +1,14 @@
+THINGS TO FIX
+- List/:id
+in the Shopping List view, need to move the trash button to the right
+
+
+- How to get render to show the page it was on
+
+- Need to add lists view, where you only see the lists you create when you're signed in
+<% if current_user == @lists.user %>
+
+<% end %>
+
+
+- Make all alerts within the container

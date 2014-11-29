@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Projectnomnom</title>
+  <title>Project Nom Nom</title>
   <%= stylesheet_link_tag    'application', 'bootstrap', 'my_styles', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'bootstrap', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -62,8 +62,10 @@
 
 <%= yield %>
 
+<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+</div>
 
 </div>
 </body>
