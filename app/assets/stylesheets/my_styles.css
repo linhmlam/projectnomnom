@@ -38,3 +38,7 @@ padding-bottom: 10px;}
 .right {
   float: right;
 }
+
+.ingredient_header {
+  margin-top: -5px;
+}
