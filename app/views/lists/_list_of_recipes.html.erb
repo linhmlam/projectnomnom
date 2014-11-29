@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label>Select the recipes you would like to shop for this week:</label>
+  <ul class="list-group">
+    <% @recipes.each do |recipe| %>
+    <li class="list-group-item">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="recipe_id" name="recipe_id" value="<%= recipe.id %>"><%= recipe.name %>
+        </label>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

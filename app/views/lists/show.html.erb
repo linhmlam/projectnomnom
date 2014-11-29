@@ -1,78 +1,35 @@
-<!-- Simple full-width example-->
-
 <div class="page-header">
-  <h1>List #<%= @list.id %></h1>
+  <h1><%= @list.name %></h1>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @list.name %></dd>
-
-      <dt>User</dt>
-      <dd><%= @list.user_id %></dd>
-
-      <dt></dt>
-      <dd>
-        <div class="btn-group">
-          <a href="/lists" class="btn btn-primary">
-            <i class="fa fa-chevron-left"></i>
-          </a>
-
-          <a href="/lists/<%= @list.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_list/<%= @list.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </dd>
-    </dl>
-
-  </div>
-</div>
-
-<!-- End simple full-width example-->
-
-<!-- Responsive panel example-->
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">List #<%= @list.id %></h3>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-12">
-            <dl class="dl-horizontal">
-              <dt>Name</dt>
-              <dd><%= @list.name %></dd>
-
-              <dt>User</dt>
-              <dd><%= @list.user_id %></dd>
-
-            </dl>
-            <div class="btn-group btn-group-justified">
-              <a href="/lists" class="btn btn-primary">
-                <i class="fa fa-chevron-left"></i>
-              </a>
-
-              <a href="/lists/<%= @list.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
-              <a href="/delete_list/<%= @list.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h4>Add Item</h4>
   </div>
 </div>
 
-<!-- End responsive panel example -->
+
+<form action="/create_item">
+  <input class="hidden" name="list_id" id="list_id" value="<%= @list.id %>">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
+      <label for="recipe_quantity">Quantity</label>
+      <input type="number" id="quantity" name="quantity" class="form-control" placeholder="0" step="any" min="0">
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <label for="unit">Measurement</label>
+      <input type="text" id="unit" name="unit" class="form-control" placeholder="cups, tbsp, etc.">
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <label for="item">Item</label>
+      <input type="text" id="item" name="item" class="form-control" placeholder="bacon, eggs, toilet paper, etc.">
+    </div>
+    <div class="col-sm-1 col-md-1">
+      <div class="add_icon">
+        <label for="submit" class="btn"><i class="fa fa-plus fa-2x"></i></label>
+        <input id="submit" type="submit" value="add_item" class="hidden">
+      </div>
+    </div>
+  </div>
+</form>

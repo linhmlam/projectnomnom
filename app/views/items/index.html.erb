@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Lists
-    <a href="/lists/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+    Items
+    <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
 
@@ -12,8 +12,10 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>User</th>
+          <th>List</th>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Unit</th>
           <th></th>
           <th></th>
           <th></th>
@@ -21,22 +23,24 @@
       </thead>
 
       <tbody>
-        <% @lists.each do |list| %>
+        <% @items.each do |item| %>
           <tr>
-            <td><%= list.name %></td>
-            <td><%= list.user_id %></td>
+            <td><%= item.list_id %></td>
+            <td><%= item.item %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.unit %></td>
             <td>
-              <a href="/lists/<%= list.id %>" class="btn btn-primary">
+              <a href="/items/<%= item.id %>" class="btn btn-primary">
                 <i class="fa fa-search-plus"></i>
               </a>
             </td>
             <td>
-              <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
+              <a href="/items/<%= item.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
             </td>
             <td>
-              <a href="/delete_list/<%= list.id %>" class="btn btn-danger">
+              <a href="/delete_item/<%= item.id %>" class="btn btn-danger">
                 <i class="fa fa-trash-o"></i>
               </a>
             </td>
@@ -53,38 +57,44 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Lists (start typing)" class="form-control">
+    <input type="text" id="quicksearch" placeholder="Search Items (start typing)" class="form-control">
   </div>
 </div>
 
 <hr>
 
 <div class="row isotope-container">
-<% @lists.each do |list| %>
+<% @items.each do |item| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">List #<%= list.id %></h3>
+        <h3 class="panel-title">Item #<%= item.id %></h3>
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Name</dt>
-          <dd><%= list.name %></dd>
+          <dt>List</dt>
+          <dd><%= item.list_id %></dd>
 
-          <dt>User</dt>
-          <dd><%= list.user_id %></dd>
+          <dt>Item</dt>
+          <dd><%= item.item %></dd>
+
+          <dt>Quantity</dt>
+          <dd><%= item.quantity %></dd>
+
+          <dt>Unit</dt>
+          <dd><%= item.unit %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <a href="/lists/<%= list.id %>" class="btn btn-primary">
+          <a href="/items/<%= item.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
+          <a href="/items/<%= item.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_list/<%= list.id %>" class="btn btn-danger">
+          <a href="/delete_item/<%= item.id %>" class="btn btn-danger">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>
