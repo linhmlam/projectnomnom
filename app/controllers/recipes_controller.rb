@@ -5,16 +5,19 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+
   end
 
   def new
     @recipe = Recipe.new
+    3.times {@recipe.recipe_ingredients.build}
   end
 
   def create
     @recipe = Recipe.new
-    @recipe.name = params[:name]
-    @recipe.photo = params[:photo]
+
+    # @recipe.name = params[:name]
+    # @recipe.photo = params[:photo]
 
     if @recipe.save
       redirect_to "/recipes", :notice => "Recipe created successfully."
@@ -47,4 +50,11 @@ class RecipesController < ApplicationController
 
     redirect_to "/recipes", :notice => "Recipe deleted."
   end
+
+  private
+    def recipe_params
+      params.require(:recipe).permit(:name,:photo, recipe_ingredients_attributes: [:recipe_id, :unit, :quantity, :ingredient, :_destroy])
+    end
+
+
 end
