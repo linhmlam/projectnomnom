@@ -14,15 +14,20 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new
     @item.list_id = params[:list_id]
-    @item.item = params[:item]
+    @item.name = params[:item]
     @item.quantity = params[:quantity]
     @item.unit = params[:unit]
 
-    if @item.save
-      redirect_to "/lists", :notice => "Item created successfully."
+    if @item==Item.find_by(:list_id => @item.list_id, :name => @item.name)
+        old_item = Item.find_by(:list_id => @item.list_id, :name => @item.name)
+        old_item.quantity = old_item.quantity + @item.quantity
+        old_item.save
+
     else
-      render '/lists'
+        @item.save
     end
+
+    redirect_to "/lists", :notice => "Item updated successfully."
   end
 
   def edit

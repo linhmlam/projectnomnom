@@ -19,7 +19,7 @@ class RecipeIngredientsController < ApplicationController
     @recipe_ingredient.ingredient = params[:ingredient]
 
     if @recipe_ingredient.save
-      redirect_to "/recipe_ingredients", :notice => "Recipe ingredient created successfully."
+      redirect_to "/recipes", :notice => "Recipe ingredient created successfully."
     else
       render 'new'
     end

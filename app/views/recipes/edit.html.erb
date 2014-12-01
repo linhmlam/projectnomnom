@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @recipe.errors.any? %>
-  <% @recipe.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @recipe.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 
@@ -20,4 +20,37 @@
   </div>
 </div>
 
-<%= render "form" %>
+<form action="/update_recipe/<%= @recipe.id %>" class="form-horizontal">
+  <input class="hidden" name="user_id" value="<%= current_user %>">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <!-- Label and input for name -->
+      <div class="form-group">
+         <label for="name" class="col-sm-2 control-label">
+          Recipe Name
+        </label>
+        <div class="col-sm-10">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @recipe.name %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+         <label for="photo" class="col-sm-2 control-label">
+          Image URL
+        </label>
+        <div class="col-sm-10">
+        <input type="text" id="photo" name="photo" placeholder="Name" class="form-control" value="<%= @recipe.photo %>">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
+      <div class="form-group">
+        <input type="submit" value="Create Recipe" class="btn btn-success">
+        or
+        <a href="/lists">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>

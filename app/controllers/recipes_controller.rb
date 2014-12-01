@@ -43,6 +43,11 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe_ingredients = Recipe.where(:id => @recipe.id)
+
+    @recipe_ingredients.each do |recipe_ingredient|
+      recipe_ingredient.destroy
+    end
 
     @recipe.destroy
 
