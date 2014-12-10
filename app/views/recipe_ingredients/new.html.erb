@@ -11,127 +11,70 @@
 
 <!-- Simple full-width example-->
 
-<div class="page-header">
-  <h1>Add Recipe Ingredient</h1>
-</div>
-
 <div class="row">
-  <div class="col-md-12">
-    <form action="/create_recipe_ingredient" class="form-horizontal">
-      <!-- Label and input for recipe_id -->
-      <div class="form-group">
-        <label for="recipe_id" class="col-sm-2 control-label">
-          Recipe
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="recipe_id" name="recipe_id" placeholder="Recipe" class="form-control" value="<%= @recipe_ingredient.recipe_id %>">
-        </div>
-      </div>
-
-      <!-- Label and input for quantity -->
-      <div class="form-group">
-        <label for="quantity" class="col-sm-2 control-label">
-          Quantity
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @recipe_ingredient.quantity %>">
-        </div>
-      </div>
-
-      <!-- Label and input for unit -->
-      <div class="form-group">
-        <label for="unit" class="col-sm-2 control-label">
-          Unit
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="unit" name="unit" placeholder="Unit" class="form-control" value="<%= @recipe_ingredient.unit %>">
-        </div>
-      </div>
-
-      <!-- Label and input for ingredient -->
-      <div class="form-group">
-        <label for="ingredient" class="col-sm-2 control-label">
-          Ingredient
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="ingredient" name="ingredient" placeholder="Ingredient" class="form-control" value="<%= @recipe_ingredient.ingredient %>">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" value="Create Recipe Ingredient" class="btn btn-success">
-          or
-          <a href="/recipe_ingredients">Cancel</a>
-        </div>
-      </div>
-    </form>
+  <div class="col-sm-offset-1 col-sm-2 col-md-offset-2 col-md-2">
+    <div class="header_button_left">
+     &nbsp;
+    </div>
   </div>
-</div>
-
-<!-- End simple full-width example-->
-
-<!-- Responsive panel example -->
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add Recipe Ingredient</h3>
-      </div>
-      <div class="panel-body">
-        <form action="/create_recipe_ingredient" class="form-horizontal">
-          <!-- Label and input for recipe_id -->
-          <div class="form-group">
-            <label for="recipe_id" class="col-sm-2 control-label">
-              Recipe
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="recipe_id" name="recipe_id" placeholder="Recipe" class="form-control" value="<%= @recipe_ingredient.recipe_id %>">
-            </div>
-          </div>
-
-          <!-- Label and input for quantity -->
-          <div class="form-group">
-            <label for="quantity" class="col-sm-2 control-label">
-              Quantity
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @recipe_ingredient.quantity %>">
-            </div>
-          </div>
-
-          <!-- Label and input for unit -->
-          <div class="form-group">
-            <label for="unit" class="col-sm-2 control-label">
-              Unit
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="unit" name="unit" placeholder="Unit" class="form-control" value="<%= @recipe_ingredient.unit %>">
-            </div>
-          </div>
-
-          <!-- Label and input for ingredient -->
-          <div class="form-group">
-            <label for="ingredient" class="col-sm-2 control-label">
-              Ingredient
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="ingredient" name="ingredient" placeholder="Ingredient" class="form-control" value="<%= @recipe_ingredient.ingredient %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Create Recipe Ingredient" class="btn btn-success">
-              or
-              <a href="/recipe_ingredients">Cancel</a>
-            </div>
-          </div>
-        </form>
-      </div>
+  <div class="col-sm-8 col-md-6">
+    <div class="header_button_right">
+       <a href="/recipes/<%= @recipe_ingredient.recipe_id %>/edit">Edit Recipe</a> |
+       <a href="/delete_recipe/<%= @recipe_ingredient.recipe_id %>">Delete Recipe</i></a>
     </div>
   </div>
 </div>
 
-<!-- End responsive panel example -->
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="page-header">
+      <h1><%= @recipe_ingredient.recipe.name %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-6 col-md-offset-2 col-md-5">
+    <h3>Add an ingredient to your recipe:</h3>
+  </div>
+</div>
+
+<form action="/create_recipe_ingredient">
+  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe_ingredient.recipe_id %>">
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
+    <div class="form-group">
+    <label for="recipe_quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" class="form-control" placeholder="0" step="any" min="0">
+  </div>
+  </div>
+  <div class="col-sm-2 col-md-2">
+  <div class="form-group">
+    <label for="unit">Measurement</label>
+    <input type="text" id="unit" name="unit" class="form-control" placeholder="cups, tbsp, etc.">
+  </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+  <div class="form-group">
+    <label for="ingredient">Ingredient</label>
+    <input type="text" id="ingredient" name="ingredient" class="form-control" placeholder="bacon, eggs, etc.">
+  </div>
+  </div>
+  <div class="col-sm-1 col-md-1">
+    <div class="add_icon">
+    <label for="submit" class="btn btn-default"><i class="fa fa-plus fa-2x"></i></label>
+    <input id="submit" type="submit" value="add_ingredient" class="hidden">
+    </div>
+  </div>
+</div>
+</form>
+
+<div>&nbsp;</div>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-6 col-md-offset-2 col-md-5">
+    <a href="/recipes/<%= @recipe_ingredient.recipe_id %>">
+      <button type="button" class="btn btn-primary">View Recipe</button>
+    </a>
+  </div>
+</div>

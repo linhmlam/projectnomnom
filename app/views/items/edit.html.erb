@@ -11,10 +11,63 @@
 
 
 <!-- Simple full-width example -->
-
-<div class="page-header">
-  <h1>Edit Item #<%= @item.id %></h1>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="page-header">
+      <h1>Are there any changes you want to make to this list?</h1>
+    </div>
+  </div>
 </div>
+
+<form action="/update_items">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
+      <label for="quantity">Quantity</label>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <label for="unit">Measurement</label>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <label for="item">Ingredient</label>
+    </div>
+    <div class="col-sm-1 col-md-1">
+      &nbsp;
+    </div>
+  </div>
+
+
+  <div class="row">
+    <% @items.each do |item| %>
+    <input class="hidden" name="list_id" id="list_id" value="<%= @item.list_id %>">
+    <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
+      <div class="form-group">
+        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="0" step="any" min="0" value="<%= item.quantity %>">
+      </div>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <div class="form-group">
+        <input type="text" id="unit" name="unit" class="form-control" placeholder="cups, tbsp, etc." value="<%= item.unit %>">
+      </div>
+    </div>
+    <div class="col-sm-5 col-md-3">
+      <div class="form-group">
+        <input type="text" id="item" name="item" class="form-control" placeholder="bacon, eggs, toilet paper, etc." value="<%= item.name %>">
+      </div>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <div class="form-group">
+        <div class="btn-group btn-group-right">
+          <a href="/items/<%= item.id %>/edit" class="btn">
+          <i class="fa fa-refresh"></i></a>
+          <a href="/delete_item/<%= item.id %>" class="btn">
+          <i class="fa fa-trash-o"></i></a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</form>
 
 <div class="row">
   <div class="col-md-12">
@@ -71,69 +124,3 @@
 </div>
 
 <!-- End simple full-width example-->
-
-<!-- Responsive panel example -->
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Edit Item #<%= @item.id %></h3>
-      </div>
-      <div class="panel-body">
-        <form action="/update_item/<%= @item.id %>" class="form-horizontal">
-          <!-- Label and input for list_id -->
-          <div class="form-group">
-            <label for="list_id" class="col-sm-2 control-label">
-              List
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @item.list_id %>">
-            </div>
-          </div>
-
-          <!-- Label and input for item -->
-          <div class="form-group">
-            <label for="item" class="col-sm-2 control-label">
-              Item
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="item" name="item" placeholder="Item" class="form-control" value="<%= @item.item %>">
-            </div>
-          </div>
-
-          <!-- Label and input for quantity -->
-          <div class="form-group">
-            <label for="quantity" class="col-sm-2 control-label">
-              Quantity
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @item.quantity %>">
-            </div>
-          </div>
-
-          <!-- Label and input for unit -->
-          <div class="form-group">
-            <label for="unit" class="col-sm-2 control-label">
-              Unit
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="unit" name="unit" placeholder="Unit" class="form-control" value="<%= @item.unit %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Update Item" class="btn btn-warning">
-              or
-              <a href="/items/<%= @item.id %>">Cancel</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- End responsive panel example -->

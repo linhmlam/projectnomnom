@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     @list.user_id = params[:user_id]
 
     if @list.save
-      redirect_to "/lists", :notice => "List created successfully."
+      redirect_to "/items/new?list_id=#{@list.id}", :notice => "List created successfully."
     else
       render 'new'
     end
@@ -27,6 +27,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    @items = Item.where(:list_id => @list.id)
   end
 
   def update
@@ -36,7 +37,7 @@ class ListsController < ApplicationController
     @list.user_id = params[:user_id]
 
     if @list.save
-      redirect_to "/lists", :notice => "List updated successfully."
+      redirect_to "/lists/#{@list.id}/edit", :notice => "List updated successfully."
     else
       render 'edit'
     end
@@ -44,6 +45,11 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
+
+    @items = Item.where(:list_id => @list.id)
+    @items.each do |item|
+      item.destroy
+    end
 
     @list.destroy
 

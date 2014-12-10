@@ -17,7 +17,7 @@
 </div>
 
 <form action="/update_recipe_ingredients">
-  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe.id %>">
+  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe_ingredient.recipe_id %>">
   <div class="row">
     <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
       <label for="quantity">Quantity</label>
@@ -33,9 +33,9 @@
     </div>
   </div>
 
-  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe.id %>">
+  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe_ingredient.recipe_id %>">
   <div class="row">
-    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <% @recipe_ingredients.each do |recipe_ingredient| %>
     <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
       <div class="form-group">
         <input type="number" id="quantity" name="quantity" class="form-control" placeholder="0" step="any" min="0" value="<%= recipe_ingredient.quantity %>">
@@ -64,4 +64,4 @@
     <% end %>
   </div>
 
-    </form>
+</form>

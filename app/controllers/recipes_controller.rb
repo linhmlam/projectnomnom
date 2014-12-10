@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     @recipe.photo = params[:photo]
 
     if @recipe.save
-      redirect_to "/recipes", :notice => "Recipe created successfully."
+      redirect_to "/recipe_ingredients/new?recipe_id=#{@recipe.id}", :notice => "Recipe created successfully."
     else
       render 'new'
     end
@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @recipe_ingredients = RecipeIngredient.where(:recipe_id => @recipe.id)
   end
 
   def update
@@ -35,9 +36,9 @@ class RecipesController < ApplicationController
     @recipe.photo = params[:photo]
 
     if @recipe.save
-      redirect_to "/recipes", :notice => "Recipe updated successfully."
+      redirect_to "/recipes/#{@recipe.id}/edit", :notice => "Recipe updated successfully."
     else
-      render 'edit'
+      redirect_to "/recipes/#{@recipe.id}/edit"
     end
   end
 

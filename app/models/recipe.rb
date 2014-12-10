@@ -5,4 +5,6 @@ class Recipe < ActiveRecord::Base
 
   has_many :list_recipes
   has_many :lists, :through => :list_recipes
+
+  validates :name, :presence => true
 end

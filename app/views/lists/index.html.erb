@@ -3,7 +3,7 @@
       <div class="page-header">
         <h1>
           Lists
-          <a href="/lists/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+          <a href="/lists/new" class="btn btn-success"><i class="fa fa-plus"></i></a>
         </h1>
       </div>
     </div>
@@ -12,42 +12,13 @@
   <!-- Simple table layout example -->
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>User</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-
-        <tbody>
-          <% @lists.each do |list| %>
-          <tr>
-            <td><%= list.name %></td>
-            <td><%= list.user.name %></td>
-            <td>
-              <a href="/lists/<%= list.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_list/<%= list.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
+      <ul>
+        <% @lists.each do |list| %>
+          <% if current_user.id == list.user_id %>
+            <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
           <% end %>
-        </tbody>
-      </table>
+        <% end %>
+      </ul>
     </div>
   </div>
 

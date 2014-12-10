@@ -1,0 +1,56 @@
+<!-- Validation failure messages -->
+
+<% if @item.errors.any? %>
+  <% @item.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<% if @lists.blank? %>
+
+<div class="row">
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <h1>Oops!<br>
+      <small>There is no list to which <%= @recipe.name %> can be added.</small></h1><br>
+     <a href="/lists/new" class="btn btn-default">Create a list...</a>
+    </div>
+  </div>
+</div>
+
+<% else %>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <h3>Which list do you want to add <%= @recipe.name %> to:</h3>
+  </div>
+</div>
+
+<form action="/create_from_recipe">
+  <input class="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe.id %>">
+<div class="row">
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <select class="form-control" id="list_id" name="list_id">
+        <% @lists.each do |list| %>
+        <option value="<%= list.id %>"><%= list.name %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div>&nbsp;</div>
+
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-6 col-md-offset-2 col-md-5">
+     <input id="submit" type="submit" value="Add recipe" class="btn btn-primary">
+    </div>
+  </div>
+</form>
+
+<% end %>

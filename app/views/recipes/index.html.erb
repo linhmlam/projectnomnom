@@ -1,17 +1,19 @@
-<div class="page-header">
+<div class="row">
+  <div class="page-header">
   <h1>
     Recipes
-    <a href="/recipes/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+    <a href="/recipes/new" class="btn btn-success"><i class="fa fa-plus"></i></a>
   </h1>
+</div>
 </div>
 
 <!-- Responsive, Isotope-based layout example -->
 
 <div class="row">
-  <div class="col-xs-12">
     <input type="text" id="quicksearch" placeholder="Search Recipes (start typing)" class="form-control">
-  </div>
+
 </div>
+
 
 <hr>
 
@@ -23,21 +25,13 @@
         <h3 class="panel-title"><%= recipe.name %></h3>
       </div>
       <div class="panel-body">
-        <img src="<%= recipe.photo %>" width="100%">
-
-        <div class="btn-group btn-group-justified">
-          <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_recipe/<%= recipe.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
+        <% if recipe.photo.present? %>
+        <a href="/recipes/<%= recipe.id %>"><img src="<%= recipe.photo %>" width="100%"></a>
+        <% else %>
+        <center>
+        <a href="/recipes/<%= recipe.id %>"><img src="http://foro.ge/i/no_photo.gif" width="60%"></a>
+        </center>
+        <% end %>
       </div>
     </div>
   </div>
@@ -83,5 +77,6 @@
     }
   }
 </script>
+
 
 <!-- End responsive, Isotope-based layout example -->

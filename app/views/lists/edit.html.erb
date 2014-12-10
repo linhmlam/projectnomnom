@@ -1,6 +1,14 @@
 <!-- Validation failure messages -->
+<% if @item && @item.errors.any? %>
+  <% @item.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
 
-<% if @list.errors.any? %>
+<% if @list && @list.errors.any? %>
   <% @list.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -9,47 +17,72 @@
   <% end %>
 <% end %>
 
-
-<!-- Simple full-width example -->
 <div class="row">
-<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-  <div class="page-header">
-    <h1>Edit List</h1>
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="page-header">
+      <h1>Edit List<br>
+    </div>
   </div>
 </div>
-</div>
 
+<!-- Update List Name -->
 <div class="row">
-<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <form action="/update_list/<%= @list.id %>" class="form-horizontal">
-      <!-- Label and input for name -->
-      <div class="form-group">
+  <form action="/update_list/<%= @list.id %>">
+    <input type="text" id="user_id" name="user_id" placeholder="User" class="hidden" value="<%= current_user.id %>">
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
         <label for="name" class="col-sm-2 control-label">
           Name
         </label>
-        <div class="col-sm-10">
-          <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @list.name %>">
+      </div>
+      <div class="col-sm-7 col-md-5">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @list.name %>">
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+          <div class="btn-group btn-group-right">
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-refresh"></i>
+            </button>
+          </div>
         </div>
       </div>
+    </div>
+  </form>
+</div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="col-sm-2 control-label">
-        <div class="col-sm-10">
-          <input type="text" id="user_id" name="user_id" placeholder="User" class="hidden" value="<%= current_user.id %>">
-        </div>
-        </label>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" value="Update List" class="btn btn-warning">
-          or
-          <a href="/lists/<%= @list.id %>">Cancel</a>
-        </div>
-      </div>
-    </form>
+<!-- Update Items -->
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <h3>Items</h3>
   </div>
 </div>
 
-<!-- End simple full-width example-->
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-1 col-md-offset-2 col-md-1">
+    <label for="quantity">Quantity</label>
+  </div>
+  <div class="col-sm-2 col-md-2">
+    <label for="unit">Measurement</label>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <label for="item">Item</label>
+  </div>
+  <div class="col-sm-1 col-md-1">
+    &nbsp;
+  </div>
+</div>
+
+<%= render 'lists/add_items' %>
+<%= render 'lists/edit_list_items' %>
+
+<div>&nbsp;</div>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <a href="/lists/<%= @list.id %>" class="btn btn-primary">
+    Done!</a> or
+    <a href="/delete_list/<%= @list.id %>">
+      Delete List</a>
+  </div>
+</div>

@@ -13,6 +13,31 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+  <script type='text/javascript'>
+    $(function() {
+      var availableUnits = [
+        "cup",
+        "gallon",
+        "liter",
+        "milliliter",
+        "ounce",
+        "pint",
+        "quart",
+        "tablespoon",
+        "teaspoon",
+        "pinch"
+      ];
+      $( "#unit" ).autocomplete({
+        source: availableUnits
+      });
+    });
+  </script>
+
+
 </head>
 <body>
 
@@ -27,13 +52,13 @@
           <span class="icon-bar"></span>
           <!-- What do these span classes do? -->
         </button>
-        <a class="navbar-brand" href="#"><i class="fa fa-shopping-cart"></i></a>
+        <a class="navbar-brand" href="/lists"><i class="fa fa-shopping-cart"></i></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="example1">
        <ul class="nav navbar-nav">
-         <li class="active"><a href="/lists/new">Create List</a></li>
+         <li><a href="/lists/new">Create List</a></li>
          <li><a href="/lists">View Lists</a></li>
          <li><a href="/recipes">Browse Recipes</a></li>
          <li><a href="/recipes/new">Add Recipe</a></li>
@@ -60,12 +85,21 @@
 <body>
   <div class="container">
 
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <%= notice %>
+      </div>
+  <% end %>
+  <!-- <p class="alert"><%#= alert %></p> -->
+  </div>
+
 <%= yield %>
 
-<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-</div>
+<div>&nbsp;</div>
+
+
 
 </div>
 </body>
