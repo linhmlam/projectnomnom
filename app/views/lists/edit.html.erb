@@ -18,6 +18,20 @@
 <% end %>
 
 <div class="row">
+  <div class="col-sm-offset-1 col-sm-2 col-md-offset-2 col-md-2">
+    <div class="header_button_left">
+      <a href="/lists"><i class="fa fa-chevron-left"></i>  Back</a>
+    </div>
+  </div>
+  <div class="col-sm-8 col-md-6">
+    <div class="header_button_right">
+      <a href="/recipes">Add Recipe</a> |
+      <a href="/delete_list/<%= @list.id %>">Delete</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="page-header">
       <h1>Edit List<br>
