@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :list
 
-  validates :list_id, :presence => true
+  validates :list, :presence => true
   validates :quantity, :presence => true
   validates :name, :presence => true
 end

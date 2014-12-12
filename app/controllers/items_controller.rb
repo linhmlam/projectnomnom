@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
         old_item.quantity = old_item.quantity + @item.quantity
         old_item.save
 
-        redirect_to "/items/new?list_id=#{@item.list_id}", :notice => "#{@item.name.capitalize} added successfully."
+        redirect_to :back, :notice => "#{@item.name.capitalize} added successfully."
     else
         if @item.save
 
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
     else
         if @item.save
 
-        redirect_to "/lists/#{@item.list_id}/edit", :notice => "#{@item.name.capitalize} added successfully."
+        redirect_to :back, :notice => "#{@item.name.capitalize} added successfully."
 
         else
           @list = @item.list
